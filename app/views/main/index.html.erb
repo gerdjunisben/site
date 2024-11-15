@@ -1,0 +1,23 @@
+
+<div id='basePage'>
+    <nav id='navBar'>
+        <p>wala</p>
+    </nav>
+    <div id='mainArea'>
+        <% @posts.each do |p|%>
+            <%= link_to post_path(p) do %>
+                <div class='post'>
+                    <% if p.preview_image.attached? %>
+                        <%= image_tag(p.preview_image, alt:"preview", class:"previewImg") %>
+                    <% else %>
+                        <p>No preview image available</p>
+                    <% end %>
+                    <div>
+                        <h1><%= p.title%></h1>
+                        <p class = 'postText'><%= p.body%></p>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

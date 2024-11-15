@@ -1,0 +1,18 @@
+<div id='basePage'>
+    <nav id='navBar'>
+        <p>post page</p>
+    </nav>
+    <div id='mainArea'>
+        <div class='post'>
+            <% if @post.preview_image.attached? %>
+                <%= image_tag(@post.preview_image, alt:"preview", class:"previewImg") %>
+            <% else %>
+                <p>No preview image available</p>
+            <% end %>
+            <div>
+                <h1><%= @post.title%></h1>
+                <p class = 'postText'><%= @post.body%></p>
+            </div>
+        </div>
+    </div>
+</div>
