@@ -1,18 +1,26 @@
 <div id='basePage'>
     <nav id='navBar'>
-        <p>post page</p>
+        <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo") %>
+        <%= link_to root_path do%>
+            <p class = 'navLink'>Home</p>
+        <% end%>
+        <%= link_to  about_path do%>
+            <p class = 'navLink'>About Me</p>
+        <% end%>
+        <%= button_to 'Create Post', '/auth/google_oauth2', class: 'navLink' %>
     </nav>
     <div id='mainArea'>
-        <div class='post'>
+        <div class='postPageHeader'>
             <% if @post.preview_image.attached? %>
                 <%= image_tag(@post.preview_image, alt:"preview", class:"previewImg") %>
             <% else %>
                 <p>No preview image available</p>
             <% end %>
-            <div>
-                <h1><%= @post.title%></h1>
-                <p class = 'postText'><%= @post.body%></p>
-            </div>
+            <h1><%= @post.title%></h1>
+        </div>
+        
+        <div>
+            <p class = 'postText'><%= @post.body%></p>
         </div>
     </div>
 </div>

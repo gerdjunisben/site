@@ -1,7 +1,15 @@
 
 <div id='basePage'>
     <nav id='navBar'>
-        <p>wala</p>
+        <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo") %>
+        <%= link_to root_path do%>
+            <p class = 'navLink selected'>Home</p>
+        <% end%>
+        <%= link_to  about_path do%>
+            <p class = 'navLink'>About Me</p>
+        <% end%>
+        
+        <%= button_to 'Create Post', '/auth/google_oauth2', class: 'navLink' %>
     </nav>
     <div id='mainArea'>
         <% @posts.each do |p|%>
@@ -14,7 +22,7 @@
                     <% end %>
                     <div>
                         <h1><%= p.title%></h1>
-                        <p class = 'postText'><%= p.body%></p>
+                        <p class = 'postText'><%= p.body[0,80]%></p>
                     </div>
                 </div>
             <% end %>

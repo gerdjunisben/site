@@ -1,39 +1,51 @@
-<div id='mainArea'>
-  <h1>Create a New Post</h1>
+<div id='basePage'>
+  <nav id='navBar'>
+      <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo") %>
+      <%= link_to root_path do%>
+          <p class = 'navLink'>Home</p>
+      <% end%>
+      <%= link_to  about_path do%>
+          <p class = 'navLink'>About Me</p>
+      <% end%>
+      <%= button_to 'Create Post', '/auth/google_oauth2', class: 'navLink selected' %>
+  </nav>
+  <div id='mainArea'>
+    <h1>Create a New Post</h1>
 
-  <%= form_with(model: @post, local: true, html: { multipart: true }) do |form| %>
-    <% if @post.errors.any? %>
-      <div class="errors">
-        <h2>Errors:</h2>
-        <ul>
-          <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+    <%= form_with(model: @post, local: true, html: { multipart: true }) do |form| %>
+      <% if @post.errors.any? %>
+        <div class="errors">
+          <h2>Errors:</h2>
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+      </div>
+
+      <div>
+        <%= form.label :body %>
+        <%= form.text_area :body %>
+      </div>
+
+      <div>
+        <%= form.label :preview_image, "Preview Image" %>
+        <%= form.file_field :preview_image %>
+      </div>
+
+      <div>
+        <%= form.submit "Create Post" %>
       </div>
     <% end %>
 
-    <div>
-      <%= form.label :title %>
-      <%= form.text_field :title %>
-    </div>
-
-    <div>
-      <%= form.label :body %>
-      <%= form.text_area :body %>
-    </div>
-
-    <div>
-      <%= form.label :preview_image, "Preview Image" %>
-      <%= form.file_field :preview_image %>
-    </div>
-
-    <div>
-      <%= form.submit "Create Post" %>
-    </div>
-  <% end %>
-
-  <%= link_to 'Back to posts', posts_path %>
+    <%= link_to 'Back to posts', posts_path %>
 
 
+  </div>
 </div>
