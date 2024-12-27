@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    puts @post
     if @post.save
       redirect_to main_index_path
     else
