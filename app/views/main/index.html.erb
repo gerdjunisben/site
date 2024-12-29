@@ -1,5 +1,10 @@
 
 <div id='basePage'>
+    <% if flash[:alert] %>
+        <div class="alert flash-alert">
+            <%= flash[:alert] %>
+        </div>
+    <% end %>
     <nav id='navBar'>
         <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo") %>
         <%= link_to root_path do%>
@@ -13,10 +18,11 @@
                  <p class = 'navLink'>Create Post</p>
             <% end%>
         <% else%>
-            <%= button_to 'Create Post', '/auth/google_oauth2', class: 'navLink' %>
+            <%= button_to 'Enter Ben Mode', '/auth/google_oauth2', class: 'navLink' %>
         <% end%>
     </nav>
     <div id='mainArea'>
+        
         <% @posts.each do |p|%>
             <%= link_to post_path(p) do %>
                 <div class='post'>
@@ -28,7 +34,13 @@
                     <div>
                         <h1><%= p.title%></h1>
                         <p class = 'postText'><%= p.body[0,80]%></p>
+                         <% if user_signed_in?%>
+                            <%=link_to 'Edit', edit_post_path(p) %>
+                            <%= button_to "Delete", p, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+
+                        <%end%>
                     </div>
+                   
                 </div>
             <% end %>
         <% end %>

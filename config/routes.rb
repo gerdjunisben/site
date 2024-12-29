@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get 'main/index'
   get 'about', to: 'main#about'
   get '/auth/:provider/callback' => 'sessions#auth'
-  resources :posts, only: [ :index,:show,:new, :create]
+  resources :posts, only: [ :index,:show,:new, :create,:edit,:update,:destroy]
 end

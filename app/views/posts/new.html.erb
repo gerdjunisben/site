@@ -7,13 +7,9 @@
       <%= link_to  about_path do%>
           <p class = 'navLink'>About Me</p>
       <% end%>
-      <% if user_signed_in?%>
-            <%= link_to new_post_path do%>  
-                 <p class = 'navLink selected'>Create Post</p>
-            <% end%>
-        <% else%>
-            <%= button_to 'Create Post', '/auth/google_oauth2', class: 'navLink selected' %>
-        <% end%>
+      <%= link_to new_post_path do%>  
+        <p class = 'navLink selected'>Create Post</p>
+      <% end%>
   </nav>
   <div id='mainArea'>
     <h1>Create a New Post</h1>

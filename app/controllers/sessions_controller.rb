@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id 
       redirect_to '/posts/new'
     else 
-      redirect_to '/'
+      redirect_to '/', alert: 'You are not Ben.'
     end
 
   end
