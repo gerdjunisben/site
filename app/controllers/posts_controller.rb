@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create,:edit]
+  before_action :authenticate_user!, only: [ :new, :create, :edit ]
   def index
     @posts = Post.all
   end
@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   end
 
   def new
-
     @post = Post.new
   end
 
@@ -29,7 +28,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to root_path, alert: 'Post was successfully updated.'
+      redirect_to root_path, alert: "Post was successfully updated."
     else
       render :edit
     end
@@ -39,14 +38,14 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root_path, alert: 'Post was successfully deleted.'
-  end 
+    redirect_to root_path, alert: "Post was successfully deleted."
+  end
 
 
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :preview_image)  
+    params.require(:post).permit(:title, :body, :preview_image)
   end
 end

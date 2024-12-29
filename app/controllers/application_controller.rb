@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
     current_user.present?
   end
-  
+
   def authenticate_user!
     unless user_signed_in?
-      redirect_to '/', alert: 'You need to sign in to access this page.'
+      redirect_to "/", alert: "You need to sign in to access this page."
     end
   end
 end
