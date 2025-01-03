@@ -1,16 +1,30 @@
 <div id='basePage'>
-  <nav id='navBar'>
-      <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo") %>
-      <%= link_to root_path do%>
-          <p class = 'navLink'>Home</p>
-      <% end%>
-      <%= link_to  about_path do%>
-          <p class = 'navLink'>About Me</p>
-      <% end%>
-      <%= link_to new_post_path do%>  
-        <p class = 'navLink selected'>Create Post</p>
-      <% end%>
-  </nav>
+  <nav id='navBar' >
+        <div class='container-fluid d-grid gap-3 align-items-center'>
+            <header class='d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom'>
+                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo bi me-2") %>
+                </a>
+                <div class ="nav nav-pills">
+                    <%= link_to root_path, class:'nav-link d-flex justify-content-center align-items-center px-3' do%>
+                        Home
+                    <% end%>
+                    <%= link_to  about_path, class:'nav-link d-flex justify-content-center align-items-center px-3' do%>
+                        About Me
+                    <% end%>
+                    <% if user_signed_in?%>
+                        <%= link_to new_post_path, class:'nav-link d-flex justify-content-center align-items-center px-3 ' do%>  
+                            Create Post
+                        <% end%>
+                    <% else%>
+                        <div class = 'nav-link d-flex justify-content-center align-items-center px-3'>
+                            <%= button_to 'Enter Ben Mode', '/auth/google_oauth2' %>
+                        </div>
+                    <% end%>
+                </div>
+            </header>
+        </div>
+    </nav>
   <div id='mainArea'>
     <h1>Create a New Post</h1>
 

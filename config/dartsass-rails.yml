@@ -1,0 +1,3 @@
+source: app/assets/stylesheets
+destination: public/assets
+style: compressed 

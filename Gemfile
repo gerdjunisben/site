@@ -64,7 +64,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
-
+gem "dartsass-rails"
+gem "bootstrap", "~> 5.3", ">= 5.3.2"
+gem "jquery-rails"
 
 gem "devise"
 gem "dotenv-rails"

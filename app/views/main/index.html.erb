@@ -1,33 +1,64 @@
 
-<div id='basePage'>
-    <% if flash[:alert] %>
-        <div class="alert flash-alert">
-            <%= flash[:alert] %>
+<% if flash[:alert] %>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var flashModal = new bootstrap.Modal(document.getElementById('flashModal'));
+      flashModal.show();
+    });
+  </script>
+<% end %>
+
+<div class="modal fade" id="flashModal" tabindex="-1" aria-labelledby="flashModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-4 shadow">
+        <div class="modal-header border-bottom-0">
+            <h1 class="modal-title fs-5">Alert</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    <% end %>
-    <nav id='navBar'>
-        <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo") %>
-        <%= link_to root_path do%>
-            <p class = 'navLink selected'>Home</p>
-        <% end%>
-        <%= link_to  about_path do%>
-            <p class = 'navLink'>About Me</p>
-        <% end%>
-        <% if user_signed_in?%>
-            <%= link_to new_post_path do%>  
-                 <p class = 'navLink'>Create Post</p>
-            <% end%>
-        <% else%>
-            <%= button_to 'Enter Ben Mode', '/auth/google_oauth2', class: 'navLink' %>
-        <% end%>
+        <div class="modal-body py-0">
+            <p class="text-center"><%= flash[:alert] %></p>
+        </div>
+        <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+            <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+<div id='basePage'>
+    
+    <nav id='navBar' >
+        <div class='container-fluid d-grid gap-3 align-items-center'>
+            <header class='d-flex flex-wrap justify-content-between py-3 mb-4 border-bottom'>
+                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <%= image_tag('effect_update_trans.png', alt:"preview", class:"logo bi me-2") %>
+                </a>
+                <div class ="nav nav-pills">
+                    <%= link_to root_path, class:'nav-link d-flex justify-content-center align-items-center px-3' do%>
+                        Home
+                    <% end%>
+                    <%= link_to  about_path, class:'nav-link d-flex justify-content-center align-items-center px-3' do%>
+                        About Me
+                    <% end%>
+                    <% if user_signed_in?%>
+                        <%= link_to new_post_path, class:'nav-link d-flex justify-content-center align-items-center px-3' do%>  
+                            Create Post
+                        <% end%>
+                    <% else%>
+                        <div class = 'nav-link d-flex justify-content-center align-items-center px-3'>
+                            <%= button_to 'Enter Ben Mode', '/auth/google_oauth2' %>
+                        </div>
+                    <% end%>
+                </div>
+            </header>
+        </div>
     </nav>
     <div id='mainArea'>
         
         <% @posts.each do |p|%>
             <%= link_to post_path(p) do %>
-                <div class='post'>
+                <div class=' post card shadow-sm'>
                     <% if p.preview_image.attached? %>
-                        <%= image_tag(p.preview_image, alt:"preview", class:"previewImg") %>
+                        <%= image_tag(p.preview_image, alt:"preview", class:"previewImg ") %>
                     <% else %>
                         <p>No preview image available</p>
                     <% end %>
