@@ -13,7 +13,7 @@
                         About Me
                     <% end%>
                     <% if user_signed_in?%>
-                        <%= link_to new_post_path, class:'nav-link d-flex justify-content-center align-items-center px-3 ' do%>  
+                        <%= link_to new_post_path, class:'nav-link active d-flex justify-content-center align-items-center px-3 ' do%>  
                             Create Post
                         <% end%>
                     <% else%>
@@ -60,7 +60,7 @@
       </div>
     <% end %>
 
-    <%= link_to 'Back to posts', posts_path %>
+    <%= link_to 'Back to posts', root_path %>
 
 
   </div>
