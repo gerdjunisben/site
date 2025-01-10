@@ -1,9 +1,17 @@
 @import "bootstrap";
 
+@font-face {
+    font-family: 'Cool jazz';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cool jazz'), url('Cooljazz.woff') format('woff');
+}
 
 body{
 
-    
+    font-family:'Cool jazz';
+    font-weight:normal;
+    font-size: large;
     background-repeat:repeat;
     background-size: 250px 250px; 
     overflow: hidden;
