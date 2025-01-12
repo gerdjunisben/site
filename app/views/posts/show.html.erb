@@ -36,7 +36,9 @@
         </div>
         
         <div>
-            <p class = 'postText'><%= @post.body%></p>
+            <% @post.body.split("\n").each do |x|%>
+                <p class = 'postText'><%=x%></p>
+             <% end%>
         </div>
     </div>
 </div>
